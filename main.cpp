@@ -456,42 +456,57 @@ int main() {
 		*/
 		if(posnaveX-25 <= posenemigo1X+25 && posnaveX+30 >= posenemigo1X-25 && posnaveY+35 >= posenemigo1Y-20 && posnaveY-15 <= posenemigo1Y+20) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
 			//mensaje("COLISIONASTE CON EL ENEMIGO");
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
 		
 		if(posnaveX-25 <= posenemigo2X+25 && posnaveX+30 >= posenemigo2X-25 && posnaveY+35 >= posenemigo2Y-20 && posnaveY-15 <= posenemigo2Y+20) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
 			//mensaje("COLISIONASTE CON EL ENEMIGO");
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
 		
 		if(posnaveX-25 <= posenemigo3X+25 && posnaveX+30 >= posenemigo3X-25 && posnaveY+35 >= posenemigo3Y-20 && posnaveY-15 <= posenemigo3Y+20) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
-			mensaje("COLISIONASTE CON EL ENEMIGO");
+			//mensaje("COLISIONASTE CON EL ENEMIGO");
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
 		
 		if(posnaveX-25 <= posenemigo4X+25 && posnaveX+30 >= posenemigo4X-25 && posnaveY+35 >= posenemigo4Y-20 && posnaveY-15 <= posenemigo4Y+20) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
 			//mensaje("COLISIONASTE CON EL ENEMIGO");
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
 		
 		if(posnaveX-25 <= posenemigoP1X+40 && posnaveX+30 >= posenemigoP1X-40 && posnaveY+35 >= posenemigoP1Y-50 && posnaveY-15 <= posenemigoP1Y+50) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
 			//mensaje("COLISIONASTE CON EL ENEMIGO");
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
 		
 		
@@ -505,7 +520,10 @@ int main() {
 			//mensaje("TE IMPACTO UN PROYECTIL, !!CONCENTRATE!!");
 			misilYenemigo=350;
 			//vcierra();
+			posnaveX = 275;
+			posnaveY = 750;
 		}
+		
 		
 
 		
