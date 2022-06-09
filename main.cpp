@@ -270,9 +270,23 @@ void corazon(int x, int y) {
 	rectangulo_lleno(x, y-15, x+5, y-10);
 }
 
+void corazonMuerto(int x, int y) {
+	color(NEGRO);
+	rectangulo_lleno(x-15, y-5, x+10, y);
+	rectangulo_lleno(x-10, y, x+5, y+5);
+	rectangulo_lleno(x-5, y+5, x, y+10);
+	rectangulo_lleno(x-15, y-10, x-5, y-5);
+	rectangulo_lleno(x, y-10, x+10, y-5);
+	rectangulo_lleno(x-10, y-15, x-5, y-10);
+	rectangulo_lleno(x, y-15, x+5, y-10);
+}
+
 int main() {
 	// redimensionando la pantalla de juego
 	vredimensiona(550, 800);
+	
+	// contador vidas
+	int contadorVidas = 0;
 	
 	// auxiliares para el enemigo principal
 	int p, diEnemigo;
@@ -318,8 +332,6 @@ int main() {
 	int t = tecla();
 	
 	while(t!=ESCAPE) {
-		
-		
 		
 		switch(t) {
 			case ARRIBA:
@@ -415,6 +427,22 @@ int main() {
 		corazon(30, 740);
 		corazon(30, 710);
 		
+		// vidas muertas
+		if(contadorVidas==1) {
+			corazonMuerto(30, 710);
+		}
+		if(contadorVidas==2) {
+			corazonMuerto(30, 710);
+			corazonMuerto(30, 740);
+		}
+		if(contadorVidas==3) {
+			corazonMuerto(30, 710);
+			corazonMuerto(30, 740);
+			corazonMuerto(30, 770);
+			mensaje("GAME OVER");
+			vcierra();
+		}
+		
 		// los borders de los moviles para colisionar
 		// color(VERDE);
 		//rectangulo(posnaveX-10, posnaveY-10, posnaveX+15, posnaveY+20);
@@ -430,40 +458,40 @@ int main() {
 			colision(posnaveX, posnaveY);
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			//mensaje("COLISIONASTE CON EL ENEMIGO");
+			//vcierra();
 		}
 		
 		if(posnaveX-25 <= posenemigo2X+25 && posnaveX+30 >= posenemigo2X-25 && posnaveY+35 >= posenemigo2Y-20 && posnaveY-15 <= posenemigo2Y+20) {
 			colision(posnaveX, posnaveY);
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			//mensaje("COLISIONASTE CON EL ENEMIGO");
+			//vcierra();
 		}
 		
 		if(posnaveX-25 <= posenemigo3X+25 && posnaveX+30 >= posenemigo3X-25 && posnaveY+35 >= posenemigo3Y-20 && posnaveY-15 <= posenemigo3Y+20) {
 			colision(posnaveX, posnaveY);
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			mensaje("COLISIONASTE CON EL ENEMIGO");
+			//vcierra();
 		}
 		
 		if(posnaveX-25 <= posenemigo4X+25 && posnaveX+30 >= posenemigo4X-25 && posnaveY+35 >= posenemigo4Y-20 && posnaveY-15 <= posenemigo4Y+20) {
 			colision(posnaveX, posnaveY);
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			//mensaje("COLISIONASTE CON EL ENEMIGO");
+			//vcierra();
 		}
 		
 		if(posnaveX-25 <= posenemigoP1X+40 && posnaveX+30 >= posenemigoP1X-40 && posnaveY+35 >= posenemigoP1Y-50 && posnaveY-15 <= posenemigoP1Y+50) {
 			colision(posnaveX, posnaveY);
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			//mensaje("COLISIONASTE CON EL ENEMIGO");
+			//vcierra();
 		}
 		
 		
@@ -471,11 +499,14 @@ int main() {
 		// COLAPSO DE MISIL CON LA NAVE ALIADA
 		if(posnaveX-10 <= misilXenemigo && posnaveX+15 >= misilXenemigo-10 && posnaveY+20 >= misilYenemigo && posnaveY-10 <= misilYenemigo+10) {
 			colision(posnaveX, posnaveY);
+			contadorVidas++;
 			refresca();
 			espera(100);
-			mensaje("GAME OVER");
-			vcierra();
+			//mensaje("TE IMPACTO UN PROYECTIL, !!CONCENTRATE!!");
+			misilYenemigo=350;
+			//vcierra();
 		}
+		
 
 		
 		
