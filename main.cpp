@@ -1,4 +1,5 @@
-#include"miniwin.h"
+#include "miniwin.h"
+#include <cstdlib>
 using namespace miniwin;
 
 void nave(int x, int y) {
@@ -84,6 +85,7 @@ void enemigo(int x, int y) {
 
 void colision(int x, int y) {
 	color(BLANCO);
+	/*
 	rectangulo_lleno(x-5, y-5, x, y);
 	rectangulo_lleno(x-10, y-10, x-5, y-5);
 	rectangulo_lleno(x-15, y-15, x-10, y-10);
@@ -93,6 +95,40 @@ void colision(int x, int y) {
 	rectangulo_lleno(x-15, y+5, x-10, y+10);
 	rectangulo_lleno(x, y, x+5, y+5);
 	rectangulo_lleno(x+5, y+5, x+10, y+10);
+	*/
+	rectangulo_lleno(x-5, y-30, x+5, y-25);
+	rectangulo_lleno(x-10, y-25, x+10, y-20);
+	rectangulo_lleno(x-15, y-20, x+15, y-15);
+	rectangulo_lleno(x-20, y-15, x+20, y-10);
+	rectangulo_lleno(x-25, y-10, x+25, y-5);
+	rectangulo_lleno(x-30, y-5, x+30, y);
+	rectangulo_lleno(x-30, y, x+30, y+5);
+	rectangulo_lleno(x-30, y+5, x+30, y+10);
+	rectangulo_lleno(x-25, y+10, x+25, y+15);
+	rectangulo_lleno(x-20, y+15, x+20, y+20);
+	rectangulo_lleno(x-15, y+20, x+15, y+25);
+	rectangulo_lleno(x-10, y+25, x+10, y+30);
+	rectangulo_lleno(x-30, y-25, x-25, y-20);
+	rectangulo_lleno(x+30, y-25, x+25, y-20);
+	rectangulo_lleno(x-25, y-20, x-20, y-15);
+	rectangulo_lleno(x+25, y-20, x+20, y-15);
+	rectangulo_lleno(x-30, y+25, x-25, y+30);
+	rectangulo_lleno(x+25, y+25, x+30, y+30);
+	rectangulo_lleno(x-25, y+20, x-20, y+25);
+	rectangulo_lleno(x+20, y+20, x+25, y+25);
+	rectangulo_lleno(x-35, y, x-30, y+5);
+	rectangulo_lleno(x+30, y, x+35, y+10);
+	rectangulo_lleno(x+25, y, x+30, y+15);
+	rectangulo_lleno(x-5, y+30, x+5, y+35);
+	color(NEGRO);
+	rectangulo_lleno(x-10, y-10, x-5, y-5);
+	rectangulo_lleno(x-5, y-5, x, y);
+	rectangulo_lleno(x, y, x+5, y+5);
+	rectangulo_lleno(x+5, y+5, x+10, y+10);
+	rectangulo_lleno(x+10, y-10, x+5, y-5);
+	rectangulo_lleno(x+5, y-5, x, y);
+	rectangulo_lleno(x-5, y, x, y+5);
+	rectangulo_lleno(x-10, y+5, x-5, y+10);
 }
 
 void enemigoPrincipal1(int x, int y) {
@@ -218,14 +254,24 @@ void enemigoPrincipal1(int x, int y) {
 	rectangulo_lleno(x+10, y-10, x+15, y-5);
 }
 
+void disparoEnemigo(int x, int y) {
+	color_rgb(84,49,117);
+	rectangulo_lleno(x-10, y, x, y+30);
+}
+
 int main() {
 	// redimensionando la pantalla de juego
 	vredimensiona(550, 800);
 	
+	// auxiliares para el enemigo principal
+	int p, diEnemigo;
+	int misilXenemigo = 80;
+	int misilYenemigo = 320;
+	
 	// posicion inicial de la nave
 	int posnaveX = 275;
 	int posnaveY = 750;
-	
+
 	// nave
 	nave(posnaveX, posnaveY);
 	
@@ -238,7 +284,7 @@ int main() {
 	int posenemigo3Y = 200;
 	int posenemigo4X = 500;
 	int posenemigo4Y = 120;
-	int posenemigoP1X = 300;
+	int posenemigoP1X = 100;
 	int posenemigoP1Y = 300;
 	
 	//inicio del movimiento (hacia la derecha)
@@ -261,6 +307,8 @@ int main() {
 	int t = tecla();
 	
 	while(t!=ESCAPE) {
+		
+		
 		
 		switch(t) {
 			case ARRIBA:
@@ -300,6 +348,36 @@ int main() {
 		if(posenemigo4X == 50) direcenemigo4 = true;
 		
 		
+		// MOVIMIENTO DEL ENEMIGO PRINCIPAL
+		if(p == 0) {
+			diEnemigo=IZQUIERDA;
+		}
+		if(p == 1) {
+			diEnemigo=DERECHA;
+		}
+		p = rand()%50;
+		if(diEnemigo==IZQUIERDA && posenemigoP1X>=80) {
+			posenemigoP1X = posenemigoP1X - 10;
+		}else {
+			if(diEnemigo==DERECHA && posenemigoP1X<=490) {
+				posenemigoP1X = posenemigoP1X + 10;
+			}
+		}
+		
+		// DISPARO DE LA NAVE ENEMIGA
+		/*estamos tomando el rango de entre 790 a 800 como un lapso de tiempo entre cada disparo
+		cuando llega a */
+		if(misilYenemigo<=750) {
+			misilYenemigo = misilYenemigo+20;
+		}else {
+			if(misilYenemigo>=100) {
+				misilYenemigo=350;
+				misilXenemigo=posenemigoP1X;
+			}
+		}
+		
+		
+		
 		/*
 		mantiene la imagen de la nave en las siguientes posiciones
 		y borra el buffer de lo dibujado en la posicion anterior
@@ -312,9 +390,14 @@ int main() {
 		enemigo(posenemigo3X, posenemigo3Y);
 		enemigo(posenemigo4X, posenemigo4Y);
 		enemigoPrincipal1(posenemigoP1X, posenemigoP1Y);
+		disparoEnemigo(misilXenemigo, misilYenemigo);
 		// mostando la nave
 		nave(posnaveX, posnaveY);
+		color(VERDE);
 		
+		// los borders de los moviles para colisionar
+		//rectangulo(posnaveX-10, posnaveY-10, posnaveX+15, posnaveY+20);
+		//rectangulo(misilXenemigo-10, misilYenemigo, misilXenemigo, misilYenemigo+30);
 		
 		/*
 		LA COLISION
@@ -353,6 +436,26 @@ int main() {
 			mensaje("GAME OVER");
 			vcierra();
 		}
+		
+		if(posnaveX-25 <= posenemigoP1X+40 && posnaveX+30 >= posenemigoP1X-40 && posnaveY+35 >= posenemigoP1Y-50 && posnaveY-15 <= posenemigoP1Y+50) {
+			colision(posnaveX, posnaveY);
+			refresca();
+			espera(100);
+			mensaje("GAME OVER");
+			vcierra();
+		}
+		
+		
+		
+		// COLAPSO DE MISIL CON LA NAVE ALIADA
+		if(posnaveX-10 <= misilXenemigo && posnaveX+15 >= misilXenemigo-10 && posnaveY+20 >= misilYenemigo && posnaveY-10 <= misilYenemigo+10) {
+			colision(posnaveX, posnaveY);
+			refresca();
+			espera(100);
+			mensaje("GAME OVER");
+			vcierra();
+		}
+		
 		
 		// BORDES DEL JUEGO
 		color_rgb(168,20,84);
