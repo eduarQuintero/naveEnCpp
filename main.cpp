@@ -95,10 +95,127 @@ void colision(int x, int y) {
 	rectangulo_lleno(x+5, y+5, x+10, y+10);
 }
 
-void movimientoEnemigo(int x, int z) {
-	x += (z) ? 10: -10;
-	if(x == 515) z = false;
-	if(x == 35) z = true;
+void enemigoPrincipal1(int x, int y) {
+	//casco principal
+	color_rgb(191,186,240);
+	rectangulo_lleno(x-25, y-35, x+10, y-30);
+	rectangulo_lleno(x-35, y-30, x-25, y-25);;
+	rectangulo_lleno(x+10, y-30, x+20, y-25);
+	rectangulo_lleno(x-40, y-25, x-35, y-20);
+	rectangulo_lleno(x+20, y-25, x+25, y-20);
+	rectangulo_lleno(x-45, y-20, x-40, y-15);
+	rectangulo_lleno(x+25, y-20, x+30, y-15);
+	rectangulo_lleno(x-50, y-15, x-45, y-5);
+	rectangulo_lleno(x+30, y-15, x+35, y-5);
+	rectangulo_lleno(x-55, y-5, x-50, y+15);
+	rectangulo_lleno(x+35, y-5, x+40, y+15);
+	rectangulo_lleno(x-50, y+15, x-45, y+20);
+	rectangulo_lleno(x+30, y+15, x+35, y+20);
+	rectangulo_lleno(x-45, y+20, x-40, y+25);
+	rectangulo_lleno(x+25, y+20, x+30, y+25);
+	rectangulo_lleno(x-40, y+25, x+25, y+30);
+	rectangulo_lleno(x-5, y+30, x, y+35);
+	rectangulo_lleno(x-15, y+30, x-10, y+35);
+	rectangulo_lleno(x-25, y+30, x-20, y+35);
+	rectangulo_lleno(x-35, y+30, x-30, y+35);
+	rectangulo_lleno(x+5, y+30, x+10, y+35);
+	rectangulo_lleno(x+15, y+30, x+20, y+35);
+	// parte del ojo
+	color_rgb(84,49,117);
+	rectangulo_lleno(x-25, y-30, x+10, y-20);
+	rectangulo_lleno(x-30, y-25, x+20, y-20);
+	rectangulo_lleno(x-35, y-20, x-20, y-15);
+	rectangulo_lleno(x+5, y-20, x+25, y-15);
+	rectangulo_lleno(x-45, y-15, x-25, y-10);
+	rectangulo_lleno(x+10, y-15, x+30, y-10);
+	rectangulo_lleno(x-45, y-10, x-30, y-5);
+	rectangulo_lleno(x+15, y-10, x+30, y-5);
+	rectangulo_lleno(x-50, y-5, x-35, y+5);
+	rectangulo_lleno(x+20, y-5, x+35, y+5);
+	rectangulo_lleno(x-50, y+5, x-40, y+15);
+	rectangulo_lleno(x+25, y+5, x+35, y+15);
+	rectangulo_lleno(x-45, y+15, x-35, y+20);
+	rectangulo_lleno(x+20, y+15, x+30, y+20);
+	rectangulo_lleno(x-40, y+20, x-30, y+25);
+	rectangulo_lleno(x+15, y+20, x+25, y+25);
+	rectangulo_lleno(x-5, y+35, x, y+45);
+	rectangulo_lleno(x+5, y+35, x+10, y+45);
+	rectangulo_lleno(x+10, y+40, x+15, y+45);
+	rectangulo_lleno(x+15, y+35, x+20, y+40);
+	rectangulo_lleno(x+20, y+40, x+30, y+45);
+	rectangulo_lleno(x+25, y+30, x+40, y+35);
+	rectangulo_lleno(x-15, y+35, x-10, y+40);
+	rectangulo_lleno(x-20, y+40, x-10, y+45);
+	rectangulo_lleno(x-30, y+35, x-20, y+40);
+	rectangulo_lleno(x-30, y+40, x-25, y+45);
+	rectangulo_lleno(x-40, y+40, x-25, y+45);
+	rectangulo_lleno(x-50, y+30, x-35, y+35);
+	color(BLANCO);
+	rectangulo_lleno(x-35, y-25, x-30, y-20);
+	rectangulo_lleno(x-40, y-20, x-35, y-15);
+	// ojo
+	rectangulo_lleno(x-10, y-10, x, y);
+	rectangulo_lleno(x-15, y-5, x+5, y);
+	rectangulo_lleno(x-15, y-5, x-10, y+15);
+	rectangulo_lleno(x, y-5, x+5, y+15);
+	rectangulo_lleno(x-20, y, x-15, y+10);
+	rectangulo_lleno(x, y, x+10, y+10);
+	rectangulo_lleno(x-15, y+10, x+5, y+15);
+	rectangulo_lleno(x-10, y+15, x, y+20);
+	color_rgb(167,224,7);
+	rectangulo_lleno(x-20, y-20, x-15, y-15);
+	rectangulo_lleno(x-25, y-15, x-20, y-10);
+	rectangulo_lleno(x-30, y-10, x-25, y-5);
+	rectangulo_lleno(x-35, y-5, x-30, y+5);
+	rectangulo_lleno(x-40, y+5, x-35, y+15);
+	rectangulo_lleno(x-35, y+15, x-30, y+20);
+	rectangulo_lleno(x-30, y+20, x-25, y+25);
+	rectangulo_lleno(x-10, y+30, x-5, y+50);
+	rectangulo_lleno(x-15, y+50, x-10, y+60);
+	rectangulo_lleno(x-10, y+60, x-5, y+65);
+	rectangulo_lleno(x, y+30, x+5, y+45);
+	rectangulo_lleno(x+5, y+45, x+10, y+60);
+	rectangulo_lleno(x, y+60, x+5, y+65);
+	rectangulo_lleno(x+10, y+30, x+15, y+40);
+	rectangulo_lleno(x+15, y+40, x+20, y+45);
+	rectangulo_lleno(x+20, y+45, x+25, y+60);
+	rectangulo_lleno(x+20, y+30, x+25, y+40);
+	rectangulo_lleno(x+20, y+35, x+35, y+40);
+	rectangulo_lleno(x+35, y+40, x+40, y+50);
+	rectangulo_lleno(x+30, y+50, x+35, y+55);
+	rectangulo_lleno(x-20, y+30, x-15, y+40);
+	rectangulo_lleno(x-25, y+40, x-20, y+45);
+	rectangulo_lleno(x-30, y+45, x-25, y+50);
+	rectangulo_lleno(x-35, y+50, x-30, y+55);
+	rectangulo_lleno(x-30, y+55, x-25, y+60);
+	rectangulo_lleno(x-30, y+30, x-25, y+35);
+	rectangulo_lleno(x-45, y+35, x-30, y+40);
+	rectangulo_lleno(x-50, y+40, x-45, y+50);
+	rectangulo_lleno(x-45, y+50, x-40, y+55);
+	//dentro del casco
+	color_rgb(132,191,21);
+	rectangulo_lleno(x-15, y-20, x-5, y-10);
+	rectangulo_lleno(x-20, y-15, x+5, y-10);
+	rectangulo_lleno(x-25, y-10, x-10, y-5);
+	rectangulo_lleno(x, y-10, x+10, y-5);
+	rectangulo_lleno(x-30, y-5, x-15, y);
+	rectangulo_lleno(x-30, y-5, x-20, y+20);
+	rectangulo_lleno(x-35, y-5, x-30, y+15);
+	rectangulo_lleno(x-20, y+10, x-15, y+15);
+	rectangulo_lleno(x-20, y+15, x-10, y+20);
+	rectangulo_lleno(x-25, y+20, x+5, y+25);
+	rectangulo_lleno(x, y+15, x+10, y+20);
+	rectangulo_lleno(x+5, y+10, x+15, y+15);
+	rectangulo_lleno(x+10, y, x+15, y+15);
+	rectangulo_lleno(x+5, y-5, x+15, y);
+	color_rgb(105,156,25);
+	rectangulo_lleno(x+5, y+20, x+15, y+25);
+	rectangulo_lleno(x+10, y+15, x+20, y+20);
+	rectangulo_lleno(x+15, y-5, x+20, y+20);
+	rectangulo_lleno(x+20, y+5, x+25, y+15);
+	rectangulo_lleno(x-5, y-20, x+5, y-15);
+	rectangulo_lleno(x+5, y-15, x+10, y-10);
+	rectangulo_lleno(x+10, y-10, x+15, y-5);
 }
 
 int main() {
@@ -121,6 +238,8 @@ int main() {
 	int posenemigo3Y = 200;
 	int posenemigo4X = 500;
 	int posenemigo4Y = 120;
+	int posenemigoP1X = 300;
+	int posenemigoP1Y = 300;
 	
 	//inicio del movimiento (hacia la derecha)
 	bool direcenemigo1 = true;
@@ -133,6 +252,7 @@ int main() {
 	enemigo(posenemigo2X, posenemigo2Y);
 	enemigo(posenemigo3X, posenemigo3Y);
 	enemigo(posenemigo4X, posenemigo4Y);
+	enemigoPrincipal1(posenemigoP1X, posenemigoP1Y);
 	
 	// dibujamos todo
 	refresca();
@@ -191,6 +311,7 @@ int main() {
 		enemigo(posenemigo2X, posenemigo2Y);
 		enemigo(posenemigo3X, posenemigo3Y);
 		enemigo(posenemigo4X, posenemigo4Y);
+		enemigoPrincipal1(posenemigoP1X, posenemigoP1Y);
 		// mostando la nave
 		nave(posnaveX, posnaveY);
 		
