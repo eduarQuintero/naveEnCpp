@@ -259,6 +259,11 @@ void disparoEnemigo(int x, int y) {
 	rectangulo_lleno(x-10, y, x, y+30);
 }
 
+void disparoNave(int x, int y) {
+	color(ROJO);
+	rectangulo_lleno(x, y-10, x+5, y);
+}
+
 void corazon(int x, int y) {
 	color(ROJO);
 	rectangulo_lleno(x-15, y-5, x+10, y);
@@ -281,6 +286,8 @@ void corazonMuerto(int x, int y) {
 	rectangulo_lleno(x, y-15, x+5, y-10);
 }
 
+
+
 int main() {
 	// redimensionando la pantalla de juego
 	vredimensiona(550, 800);
@@ -292,6 +299,12 @@ int main() {
 	int p, diEnemigo;
 	int misilXenemigo = 80;
 	int misilYenemigo = 320;
+	
+	/*
+	auxiliares de la nave
+	int misilXnave = 275;
+	int misilYnave = 730;
+	*/
 	
 	// posicion inicial de la nave
 	int posnaveX = 275;
@@ -328,7 +341,7 @@ int main() {
 	// dibujamos todo
 	refresca();
 	
-	// capturando la tecla presionada
+	// capturando la tecla presionada para el movimiento
 	int t = tecla();
 	
 	while(t!=ESCAPE) {
@@ -399,7 +412,8 @@ int main() {
 			}
 		}
 		
-		
+		//DISPARO DE LA NAVE
+		// TRABAJANDO EN ESTO
 		
 		/*
 		mantiene la imagen de la nave en las siguientes posiciones
@@ -414,6 +428,7 @@ int main() {
 		enemigo(posenemigo4X, posenemigo4Y);
 		enemigoPrincipal1(posenemigoP1X, posenemigoP1Y);
 		disparoEnemigo(misilXenemigo, misilYenemigo);
+		//disparoNave(misilXnave, misilYnave);
 		// mostando la nave
 		nave(posnaveX, posnaveY);
 		
