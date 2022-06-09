@@ -259,6 +259,17 @@ void disparoEnemigo(int x, int y) {
 	rectangulo_lleno(x-10, y, x, y+30);
 }
 
+void corazon(int x, int y) {
+	color(ROJO);
+	rectangulo_lleno(x-15, y-5, x+10, y);
+	rectangulo_lleno(x-10, y, x+5, y+5);
+	rectangulo_lleno(x-5, y+5, x, y+10);
+	rectangulo_lleno(x-15, y-10, x-5, y-5);
+	rectangulo_lleno(x, y-10, x+10, y-5);
+	rectangulo_lleno(x-10, y-15, x-5, y-10);
+	rectangulo_lleno(x, y-15, x+5, y-10);
+}
+
 int main() {
 	// redimensionando la pantalla de juego
 	vredimensiona(550, 800);
@@ -393,9 +404,19 @@ int main() {
 		disparoEnemigo(misilXenemigo, misilYenemigo);
 		// mostando la nave
 		nave(posnaveX, posnaveY);
-		color(VERDE);
+		
+		// BORDES DEL JUEGO
+		color_rgb(168,20,84);
+		rectangulo(5, 5, 545, 795);
+		rectangulo(10, 10, 540, 790);
+		
+		// vidas
+		corazon(30, 770);
+		corazon(30, 740);
+		corazon(30, 710);
 		
 		// los borders de los moviles para colisionar
+		// color(VERDE);
 		//rectangulo(posnaveX-10, posnaveY-10, posnaveX+15, posnaveY+20);
 		//rectangulo(misilXenemigo-10, misilYenemigo, misilXenemigo, misilYenemigo+30);
 		
@@ -455,12 +476,8 @@ int main() {
 			mensaje("GAME OVER");
 			vcierra();
 		}
+
 		
-		
-		// BORDES DEL JUEGO
-		color_rgb(168,20,84);
-		rectangulo(5, 5, 545, 795);
-		rectangulo(10, 10, 540, 790);
 		
 		refresca();
 		t = tecla();
