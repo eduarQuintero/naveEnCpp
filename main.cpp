@@ -359,6 +359,8 @@ int main() {
 	// dibujamos todo
 	refresca();
 	
+	mensaje("PARA MOVILIZAR LA NAVE USE LAS FLECHAS DIRECCIONALES Y PARA AUMENTAR O DISMINUIR LA VELOCIDAD USE F1 O F2");
+	
 	// capturando la tecla presionada para el movimiento
 	int t = tecla();
 	
@@ -374,16 +376,28 @@ int main() {
 		
 		switch(t) {
 			case ARRIBA:
-				posnaveY -= (posnaveY >= 45)?velNave:0;
+				if(posnaveY >= 45 + velNave) {
+					posnaveY -= velNave;
+				}
+				//posnaveY -= (posnaveY >= 45)?velNave:0;
 				break;
 			case ABAJO:
-				posnaveY += (posnaveY <= 745)?velNave:0;
+				if(posnaveY <=745 - velNave) {
+					posnaveY += velNave;
+				}
+				//posnaveY += (posnaveY <= 745)?velNave:0;
 				break;
 			case DERECHA:
-				posnaveX += (posnaveX <= 500)?velNave:0;
+				if(posnaveX <=500 - velNave) {
+					posnaveX += velNave;
+				}
+				//posnaveX += (posnaveX <= 600)?velNave:0;
 				break;
 			case IZQUIERDA:
-				posnaveX -= (posnaveX >= 40)?velNave:0;
+				if(posnaveX >= 40 + velNave) {
+					posnaveX -= velNave;
+				}
+				//posnaveX -= (posnaveX >= 40)?velNave:0;
 				break;
 		}
 		
