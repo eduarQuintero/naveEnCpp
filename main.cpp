@@ -356,6 +356,11 @@ int main() {
 	enemigo(posenemigo4X, posenemigo4Y);
 	enemigoPrincipal1(posenemigoP1X, posenemigoP1Y);
 	
+	// BORDES DEL JUEGO
+	color_rgb(168,20,84);
+	rectangulo(5, 5, 545, 795);
+	rectangulo(10, 10, 540, 790);
+	
 	// dibujamos todo
 	refresca();
 	
