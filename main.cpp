@@ -286,6 +286,20 @@ void corazonMuerto(int x, int y) {
 	rectangulo_lleno(x, y-15, x+5, y-10);
 }
 
+void nivelDos() {
+	color(NEGRO);
+	rectangulo_lleno(200, 13, 380, 24);
+	color(ROJO);
+	texto(250, 10, "NIVEL 2");
+}
+
+void nivelTres() {
+	color(NEGRO);
+	rectangulo_lleno(200, 13, 380, 24);
+	color(ROJO);
+	texto(250, 10, "NIVEL 3");
+}
+
 
 
 int main() {
@@ -294,11 +308,15 @@ int main() {
 	
 	// contador vidas
 	int contadorVidas = 0;
+	int contadorTiempo = 0, dif = 50;
 	
 	// auxiliares para el enemigo principal
 	int p, diEnemigo;
 	int misilXenemigo = 80;
 	int misilYenemigo = 320;
+	
+	/* VELOCIDAD DE LA NAVE ALIADA*/
+	int velNave=10;
 	
 	/*
 	auxiliares de la nave
@@ -346,18 +364,26 @@ int main() {
 	
 	while(t!=ESCAPE) {
 		
+		if(t==F1 && velNave<100) {
+			velNave += 50;
+		} else {
+			if(t==F2 && velNave > 50) {
+				velNave -= 50;
+			}
+		}
+		
 		switch(t) {
 			case ARRIBA:
-				posnaveY -= (posnaveY >= 45)?10:0;
+				posnaveY -= (posnaveY >= 45)?velNave:0;
 				break;
 			case ABAJO:
-				posnaveY += (posnaveY <= 745)?10:0;
+				posnaveY += (posnaveY <= 745)?velNave:0;
 				break;
 			case DERECHA:
-				posnaveX += (posnaveX <= 500)?10:0;
+				posnaveX += (posnaveX <= 500)?velNave:0;
 				break;
 			case IZQUIERDA:
-				posnaveX -= (posnaveX >= 40)?10:0;
+				posnaveX -= (posnaveX >= 40)?velNave:0;
 				break;
 		}
 		
@@ -419,7 +445,8 @@ int main() {
 		mantiene la imagen de la nave en las siguientes posiciones
 		y borra el buffer de lo dibujado en la posicion anterior
 		*/
-		espera(50);
+		//esperamos con dif y esto aumenta la velocidad del juego ya que dif va disminuyendo
+		espera(dif);
 		borra();
 		// dibujamos el enemigo despues de cada posicion
 		enemigo(posenemigo1X, posenemigo1Y);
@@ -432,6 +459,8 @@ int main() {
 		// mostando la nave
 		nave(posnaveX, posnaveY);
 		
+		texto(250, 10, "NIVEL 1");
+		
 		// BORDES DEL JUEGO
 		color_rgb(168,20,84);
 		rectangulo(5, 5, 545, 795);
@@ -441,6 +470,25 @@ int main() {
 		corazon(30, 770);
 		corazon(30, 740);
 		corazon(30, 710);
+		
+		// TIEMPO PARA FINALIZAR EL JUEGO
+		contadorTiempo++;
+		if(contadorTiempo==5000/dif) {
+			dif -= 10;
+			contadorTiempo=0;
+			if(dif <= 10) {
+				mensaje("SOBREVIVISTE AL ATAQUE, ERES EL GANADOR");
+				vcierra();
+			}
+		}
+		
+		//NIVELES
+		if(dif >= 30 && dif <= 40) {
+			nivelDos();
+		}
+		if(dif > 10 && dif <30) {
+			nivelTres();
+		}
 		
 		// vidas muertas
 		if(contadorVidas==1) {
